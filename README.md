@@ -14,14 +14,14 @@ sudo apt-get install python3-virtualenv
 
 2) virt.env aktifken home da
 
-#pip install Pillow
+* pip install Pillow
 ****** hata verirse:    #sudo apt-get install libjpeg-dev
-#mkdir lyk-project
-#cd lky-project
-#django-admin startproject velespi
-#cd velespi
-#pip install Django
-#python manage.py runserver
+* mkdir lyk-project
+* cd lky-project
+* django-admin startproject velespi
+* cd velespi
+* pip install Django
+* python manage.py runserver
 
 
 *****  Dili Türkçe yapmak için settings.py da 106.satır
@@ -29,7 +29,7 @@ sudo apt-get install python3-virtualenv
 
 
 3) velespi nin içinde yeni bir app oluşturduk
-#python manage.py startapp places
+* python manage.py startapp places
 
 4) Oluşturduğumuz app i projeye dahil etmek için 
 settings.py de   'places'  ekledik
@@ -48,13 +48,13 @@ settings.py de   'places'  ekledik
 
 6) Database i güncellemek için ; model oluşturduktan sonra 
 
-#python manage.py makemigrations
-#python manage.py migrate
+* python manage.py makemigrations
+* python manage.py migrate
 
 
 7) Bir admin oluşturduk
 
-#python manage.py createsuperuser
+* python manage.py createsuperuser
 
 ***** Daha basit bir admin şifresi oluşturabilmek için
 setting.py da
