@@ -7,36 +7,54 @@ sudo apt-get install python3-virtualenv
 
 1) home da  
 
-*virtualenv velespi
-*cd velespi
-*source bin/activate
-*) virt.env aktifken home da
-*pip install Pillow
+* virtualenv velespi
+* cd velespi
+* source bin/activate
+
+
+2) virt.env aktifken home da
+
+#pip install Pillow
 ****** hata verirse:    #sudo apt-get install libjpeg-dev
-*mkdir lyk-project
-*cd lky-project
-*django-admin startproject velespi
-*cd velespi
-*pip install Django
-*python manage.py runserver
+#mkdir lyk-project
+#cd lky-project
+#django-admin startproject velespi
+#cd velespi
+#pip install Django
+#python manage.py runserver
+
+
 *****  Dili Türkçe yapmak için settings.py da 106.satır
-*LANGUAGE_CODE = 'tr-TR'
-*) velespi nin içinde yeni bir app oluşturduk
-*python manage.py startapp places
-*) Oluşturduğumuz app i projeye dahil etmek için 
-*ettings.py de   'places'  ekledik
-*) model.py da database tabanlı classlar oluşturduk
-*class Place
-*class Category
-*class Review
-*class Media
+    LANGUAGE_CODE = 'tr-TR'
+
+
+3) velespi nin içinde yeni bir app oluşturduk
+#python manage.py startapp places
+
+4) Oluşturduğumuz app i projeye dahil etmek için 
+settings.py de   'places'  ekledik
+
+
+5) model.py da database tabanlı classlar oluşturduk
+
+-class Place
+-class Category
+-class Review
+-class Media
+
 *****  null=True :validation boşluğuna bakar
-*     blank=True :  veri tabanı boşluğuna bakar 
-*) Database i güncellemek için ; model oluşturduktan sonra 
-*python manage.py makemigrations
-*python manage.py migrate
-*) Bir admin oluşturduk
-*python manage.py createsuperuser
+         blank=True :  veri tabanı boşluğuna bakar 
+
+
+6) Database i güncellemek için ; model oluşturduktan sonra 
+
+#python manage.py makemigrations
+#python manage.py migrate
+
+
+7) Bir admin oluşturduk
+
+#python manage.py createsuperuser
 
 ***** Daha basit bir admin şifresi oluşturabilmek için
 setting.py da
@@ -121,4 +139,3 @@ istediğimiz yerin koordinatlarını ekliyoruz
 
 18) html den fotoğraf ekleme sayfası yaptık
 new_media.html 
-
