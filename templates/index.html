@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div id="map"></div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+var map = L.map('map').setView([40.705601,31.678499], 12);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+var markers = [];
+{% for place in places %}
+var marker = L.marker([{{ place.coordinates }}]).addTo(map)
+    .bindPopup(
+        '<a href="{{ place.get_absolute_url }}">' + 
+        '{{ place.name }}' +
+        '</a>'
+    );
+markers.push(marker);
+{% endfor %}
+var featureGroup = L.featureGroup(markers).addTo(map);
+map.fitBounds(featureGroup.getBounds());
+</script>
+
+{% endblock %}
