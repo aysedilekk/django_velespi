@@ -150,3 +150,7 @@ place.html de ajax kullanıldı.
 * veya <script> şeklinde ekleyebiliyoruz.
 
 * beğenmek için başka bir sayfaya gidip gelmeyi engellemek için bu yöntemi kullandık
+
+21) login olmayanlar için , view.py da
+
+@login_required(login_url='login') eklendi

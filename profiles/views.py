@@ -36,7 +36,9 @@ def login(request):
 				request,
 				'Giris yaptiniz.'
 			)
-			return redirect('/')
+			
+			if request.GET.get('next'):
+				return redirect(request.GET['next'])
 
 	return render(request, 'login.html', {
 		'form': form
