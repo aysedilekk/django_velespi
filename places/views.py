@@ -1,5 +1,8 @@
+import json
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.http import HttpResponse
 
 from places.models import Place
 from places.forms import PlaceCreationForm, MediaCreationForm, ReviewCreationForm
@@ -66,15 +69,14 @@ def new_media(request, place_id):
         }
     )
 
-
-
 def new_review(request, place_id):
     place = get_object_or_404(Place, id=place_id)
     form = ReviewCreationForm()
 
     if request.method == "POST":
-        form = ReviewCreationForm(request.POST, request.FILES)
+        form = ReviewCreationForm(request.POST)
         if form.is_valid():
+            form.instance.user = request.user
             form.instance.place = place
             form.save()
             return redirect(place.get_absolute_url())
@@ -87,3 +89,23 @@ def new_review(request, place_id):
             'form': form,
         }
     )
+
+def like_place(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
+    
+    if request.user in place.likes.all():
+        place.likes.remove(request.user)
+        action = 'unlike'
+    else:
+        place.likes.add(request.user)
+        action = 'like'
+
+    if request.is_ajax():
+        return HttpResponse(
+            json.dumps({
+                'count': place.likes.count(),
+                'action': action
+            })
+        )
+
+    return redirect(place.get_absolute_url())
